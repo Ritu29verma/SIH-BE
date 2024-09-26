@@ -23,10 +23,8 @@ mongoose
     console.log(err);
   });
 
-
-
 const app = express();
-
+const port = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -51,7 +49,7 @@ app.use(fileUpload({
 }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('Server listening on port 3000');
 });
 
