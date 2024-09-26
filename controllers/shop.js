@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
 import jwt from "jsonwebtoken";
-import shop from "../models/shop.js";
+import Shop from "../models/shop.js";
 import { errorHandler } from "../utils/error.js";
 
 // create shop
@@ -17,7 +17,7 @@ export const createShop = async (req, res, next) => {
       console.log("Request received:", req.body);
       
       // Create a new shop object with the incoming data
-      const newShop = new shop({
+      const newShop = new Shop({
         name,
         address,
         phoneNumber,
@@ -82,6 +82,26 @@ const sendShopToken = (shop, statusCode, res) => {
     },
   });
 };
+
+// export const getShopByUserId = async (req, res) => {
+//   try {
+//     console.log('Fetching shop info');
+//     const { userId } = req.params; // Get the userId from the route params
+
+//     // Find the shop associated with the given userId
+//     const shop = await Shop.find({ userId });
+
+//     if (!shop || shop.length === 0) {
+//       return res.status(404).json({ success: false, message: 'No shop found for this user.' });
+//     }
+
+//     return res.status(200).json({ success: true, shop });
+//   } catch (error) {
+//     return res.status(500).json({ success: false, message: 'Server error', error: error.message });
+//   }
+// };
+
+
 
 // Login route
 // export const loginShop = 
